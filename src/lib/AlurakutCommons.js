@@ -222,7 +222,7 @@ export function AlurakutProfileSidebarMenuDefault() {
 AlurakutProfileSidebarMenuDefault.Wrapper = styled.div`
   a {
     font-size: 12px;
-    color: #2E7BB4;
+    color: #FFFFFF;
     margin-bottom: 16px;
     display: flex;
     align-items: center;
@@ -467,7 +467,7 @@ export const AlurakutStyles = css`
     background: #888; 
     border-radius: 10px;
   }
-  *::-webkit-scrollbar-thumb:hover {
+  *::-webkit-scrollbar-thumb:boxLink {
     background: #555; 
   }
   a,
