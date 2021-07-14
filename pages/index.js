@@ -59,6 +59,7 @@ export default function Home() {
             <Box>
               <h2 className="subTitle">
                 O que vc deseja fazer
+                </h2>
                 <form onSubmit={function handleCriaComunidade(e){
                   e.preventDefault();
                   //receber dados do form
@@ -92,9 +93,7 @@ export default function Home() {
                   <button>
                     Criar comunidade
                   </button>
-
                 </form>
-              </h2>
             </Box>
           </div>
           <div class="profileRelationsArea" style={{gridArea: 'profileRelationsArea'}}>

@@ -18,11 +18,14 @@ const Box = styled.div`
     font-weight: 400;
     margin-bottom: 20px;
     color: var(--backgroundTertiary);
+    
   }
   .subTitle {
     font-size: 18px;
     font-weight: 400;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    color: var(--backgroundTertiary);
+
   }
   .smallTitle {
     margin-bottom: 20px;
@@ -30,6 +33,7 @@ const Box = styled.div`
     font-weight: 700;
     color: var(--backgroundTertiary);
     margin-bottom: 20px;
+    
   }
   hr {
     margin-top: 12px;
@@ -39,14 +43,14 @@ const Box = styled.div`
   }
   input {
     width: 100%;
-    background-color: #F4F4F4;
-    color: #333333;
+    background-color: #333333;
+    color: #F4F4F4;
     border: 0;
     padding: 14px 16px;
     margin-bottom: 14px;
     border-radius: 10000px;
     ::placeholder {
-      color: #333333;
+      color: #ffffff;
       opacity: 1;
     }
   }
@@ -55,7 +59,7 @@ const Box = styled.div`
     padding: 8px 12px;
     color: #FFFFFF;
     border-radius: 10000px;
-    background-color: #6F92BB;
+    background-color: #BB1853;
   }
 `; 
 
