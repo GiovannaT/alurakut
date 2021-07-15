@@ -56,7 +56,7 @@ AlurakutMenu.Wrapper = styled.header`
   width: 100%;
   background-color: #1C1417;
   .alurakutMenuProfileSidebar {
-    background: white;
+    background: #1C1417;
     position: fixed;
     z-index: 100;
     padding: 46px;
@@ -80,10 +80,10 @@ AlurakutMenu.Wrapper = styled.header`
     }
     .boxLink {
       font-size: 18px;
-      color: #2E7BB4;
+      color: #ffffff;
       -webkit-text-decoration: none;
       text-decoration: none;
-      font-weight: 800;
+      font-weight: 700;
     }
     hr {
       margin-top: 12px;
@@ -184,12 +184,12 @@ function AlurakutMenuProfileSidebar({ githubUser }) {
 // ================================================================================================================
 // AlurakutProfileSidebarMenuDefault
 // ================================================================================================================
-export function AlurakutProfileSidebarMenuDefault() {
+export function AlurakutProfileSidebarMenuDefault(props) {
   return (
     <AlurakutProfileSidebarMenuDefault.Wrapper>
       <nav>
         <a href="/">
-          <img src={`${BASE_URL}/icons/user.svg`} />
+          <img src={`${BASE_URL}/icons/user.svg`}/>
             Perfil
           </a>
         <a href="/">
@@ -221,7 +221,7 @@ export function AlurakutProfileSidebarMenuDefault() {
 }
 AlurakutProfileSidebarMenuDefault.Wrapper = styled.div`
   a {
-    font-size: 12px;
+    font-size: 10px;
     color: #FFFFFF;
     margin-bottom: 16px;
     display: flex;
@@ -235,7 +235,6 @@ AlurakutProfileSidebarMenuDefault.Wrapper = styled.div`
     }
   }
 `;
-
 // ================================================================================================================
 // OrkutNostalgicIconSet
 // ================================================================================================================
