@@ -49,9 +49,7 @@ function ProfileRelationsBox(props){
 export default function Home() {
     
     const [comunidades, setComunidades]=React.useState([{
-      id: new Date().toISOString(),
-      title: 'Eu odeio acordar cedo',
-      image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg'
+
     }]);
 
     const githubUser = 'GiovannaT';
@@ -60,6 +58,7 @@ export default function Home() {
     //pegar um array de dados do github
     const [seguidores, setSeguidores] = React.useState([]);
     React.useEffect(function(){
+      //fetch cria uma Promise, e essa promise traz um array
       fetch('https://api.github.com/users/giovannat/followers')
     .then(function(respostaServidor){
       return respostaServidor.json();
@@ -67,13 +66,44 @@ export default function Home() {
     .then(function(respostaCompleta){
       setSeguidores(respostaCompleta);
     })
+    
+    //GRAPHQL
+    fetch('https://graphql.datocms.com/',{
+      method: 'POST',
+      headers:{
+        'Authorization':'f5224171da25d0e142c628bad628dc',
+        'Content-Type': 'application/json',
+        'Accept':'application/json',
+      },
+      //corpo da requisição:
+      body: JSON.stringify({"query":`query {
+        allCommunities{
+          title
+          id
+          imageUrl
+          creatorslug
+        }
+      }`})
+    })
+    .then((response) => response.json())
+    //.then(function(response){return response.json()})
+    //OU
+    //.then((respostaCompleta) => {console.log(respostaCompleta)})
+    .then((respostaCompleta)=>{
+      //o dado que está trazendo será prefixado pelo dado que está trazendo no stringify
+      const comunidadesDato = respostaCompleta.data.allCommunities;
+      console.log(comunidadesDato)
+      setComunidades(comunidadesDato)
+    })
+
     }, [])
-    //box com map que terá array do gitHub
+
 
     return (
       <>
         <AlurakutMenu githubUser={githubUser}/>
         <MainGrid> 
+        
           <div className="profileArea" style={{gridArea: 'profileArea'}}>
             <ProfileSidebar githubUser={githubUser}/>
           </div>
@@ -96,10 +126,26 @@ export default function Home() {
                   console.log('Campo: ', dadosDoForm.get('image'));
 
                   const comunidade={
-                    id: '123456789',
                     title: dadosDoForm.get('title'),
-                    image:dadosDoForm.get('image'),
+                    imageUrl:dadosDoForm.get('image'),
+                    creatorslug: 'giovannat',
                   }
+                  
+                  fetch('/api/comunidades', {
+                    method: 'POST',
+                    headers:{
+                      'Content-Type':'application/json'
+                    },
+                    body: JSON.stringify(comunidade)
+                  })
+                  .then(async(response)=>{
+                    const dados = await response.json();
+                    console.log(dados.registroCriado);
+                    const comunidade = dados.registroCriado;
+
+                    const comunidadesAtualizadas = [...comunidades, comunidade];
+                    setComunidades(comunidadesAtualizadas)
+                  })
                   
                 }}>
                   <div>
@@ -152,8 +198,8 @@ export default function Home() {
               {comunidades.map((itemAtual)=>{
                 return(
                   <li  key={itemAtual.id}>
-                    <a href={`/users/${itemAtual.title}`}>
-                      <img src={itemAtual.image}/>
+                    <a href={`/communities/${itemAtual.title}`}>
+                      <img src={itemAtual.imageUrl}/>
                       <span>
                         {itemAtual.title}
                       </span>
