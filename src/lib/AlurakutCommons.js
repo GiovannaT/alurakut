@@ -323,6 +323,7 @@ const AlurakutLoginScreen = css`
     --backgroundSecondary: #F1F9FE;
     --backgroundTertiary: #FFFFFF;
     --backgroundQuarternary: #BBCDE8;
+    --backgroundDarkTheme: #1c1417;
     --colorPrimary: #2E7BB4;
     --colorSecondary: #388BB0;
     --colorTertiary: #2F4A71;
@@ -353,10 +354,11 @@ const AlurakutLoginScreen = css`
     }
     .logoArea {
       grid-area: logoArea;
-      background-color: var(--backgroundTertiary);
+      background-color: var(--backgroundDarkTheme);
       border-radius: var(--commonRadius);
       padding: var(--gutter);
       text-align: center;
+      color: var(--backgroundTertiary);
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
@@ -392,10 +394,11 @@ const AlurakutLoginScreen = css`
         align-items: center;
         justify-content: center;
         text-align: center;
+        color: var(--backgroundTertiary);
         padding: var(--gutter);
         padding-left: 50px;
         padding-right: 50px;
-        background-color: var(--backgroundSecondary);
+        background-color: var(--backgroundDarkTheme);
         border-radius: var(--commonRadius);
         flex: 1;
         &:not(:last-child) {
@@ -412,7 +415,7 @@ const AlurakutLoginScreen = css`
         }
         a {
           text-decoration: none;
-          color: var(--colorPrimary);
+          color: var(--colorQuarternary);
         }
         input {
           width: 100%;
@@ -430,22 +433,23 @@ const AlurakutLoginScreen = css`
           border: 0;
           padding: 12px;
           border-radius: var(--commonRadius);
-          background-color: var(--colorPrimary);
+          background-color: var(--colorQuarternary);
           color: var(--textSecondaryColor);
         }
       }
     }
     .footerArea {
       grid-area: footerArea;
-      background-color: var(--backgroundQuarternary);
+      background-color: var(--backgroundDarkTheme);
       border-radius: var(--commonRadius);
       padding: 8px;
       p {
         font-size: 12px;
         text-align: center;
+        color:var(--backgroundTertiary);
         a {
           text-decoration: none;
-          color: var(--colorPrimary);
+          color: var(--colorQuarternary);
         }
       }
     }
